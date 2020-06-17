@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Code init{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="row">
+            <div class="col-1">
+                <img src="{{ asset('build/images/LogoCodeInit2.png') }}" class="img-fluid">
+            </div>
+            <span onclick="openSlide()" class="col-1"><i class="fa fa-bars fa-2x"></i></span>
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeSlide()">&times;</a>
+                <ul>
+                    <li>Accueil</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-6">
+                <img src="{{ asset('build/images/LogoCodeInit.png') }}" class="img-fluid">
+                <h1>
+                    Initiation a la programmation
+                    <br>web et jeux videos
+                </h1>
+                <a href="#" class="btn-init">Débuter</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="container-fluid">
+            <h2 class="text-center">La réference de code init</h2>
+            <hr class="col-3 border">
+            <p class="text-center">
+
+                <br>
+                <br>
+            </p>
+            <div class="row">
+                <div class="col-4">
+                    <img src="{{ asset('build/images/RealisationDeProjets.png') }}" class="img-fluid">
+                    <strong>réalisations de projets</strong>
+                    <span>On apprend à coder en s'amusant</span>
+                </div>
+                <div class="col-4">
+                    <img src="{{ asset('build/images/ApprentissagePasAPas.png') }}" class="img-fluid">
+                    <strong>Apprentissage pas à pas</strong>
+                    <span>chacun a son rythme</span>
+                </div>
+                <div class="col-4">
+                    <img src="{{ asset('build/images/DesCoursPersonnalises.png') }}" class="img-fluid">
+                    <strong>des cours personnalisés</strong>
+                    <span>des cours pour chaque profils</span>
+                </div>
+            </div>
+        </section>
+        <section class="container-fluid">
+            <h2 class="text-center">La réference de code init</h2>
+            <hr class="col-3 border">
+            <p class="text-center">
+
+                <br>
+                <br>
+            </p>
+            <div class="row text-center text-white">
+                {% for product in products %}
+                    <div class="col-4 py-5" style="background-image:url({{ asset('build/images/' ~ product.image) }})">
+                        <h3 class="text-uppercase text-center pt-2">{{ product.name }}</h3>
+                        <ul>
+                            <li>{{ product.content }}</li>
+                            <li>{{ product.content1 }}</li>
+                            <li>{{ product.content2 }}</li>
+                            <li>{{ product.content3 }}</li>
+                        </ul>
+                        <a href="#" class="btn-init py-1 px-3 text-white text-uppercase">En savoir plus</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        <section class="container my-5">
+            <div class="row py-5 wrapper-doc justify-content-around">
+                <div class="col-3 text-white font-weight-bold mr-3">Recevoir notre documentation</div>
+                <div class="col-3">
+                    <input type="text" placeholder="Votre email">
+                    <input type="submit" value="envoyer" class="btn-init-white">
+                </div>
+            </div>
+        </section>
+        <section class="container my-3">
+            <div class="row">
+                <div class="col-6">
+                    <h3>Contacter-nous</h3>
+                    <hr class="col-3 border">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium at cum eaque eligendi, et explicabo facere id libero, modi neque non officiis
+                        possimus repellendus sapiente sint tenetur unde veniam.</p>
+                </div>
+                <div class="col-6">
+                    <input type="text">
+                    <input type="text"><br>
+                    <input type="text">
+                    <input type="text"><br>
+                    <textarea name="text" id="text-us" cols="30" rows="10"></textarea>
+                    <input type="submit" value="envoyer">
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="container-fluid">
+        <div class="row bg-dark align-items-center justify-content-between py-2">
+            <div class="col-1"><img src="{{ asset('build/images/LogoCodeInit.png') }}" class="img-fluid"></div>
+            <div class="col-1">Code Init &#8212 | <a href="#">Mentions légales</a></div>
+        </div>
+    </footer>
+{% endblock %}
+
