@@ -79,7 +79,7 @@
                             <li>{{ product.content2 }}</li>
                             <li>{{ product.content3 }}</li>
                         </ul>
-                        <a href="#" class="btn-init py-1 px-3 text-white text-uppercase">En savoir plus</a>
+                        <a href="{{ path('app_product', {'id': product.id}) }}" class="btn-init py-1 px-3 text-white text-uppercase">En savoir plus</a>
                     </div>
                 {% endfor %}
             </div>
