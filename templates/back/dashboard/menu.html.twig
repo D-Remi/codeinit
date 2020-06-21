@@ -1,0 +1,117 @@
+{% extends 'back/index.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block menuStart %}
+    <div class="container-fuild">
+        <!-- Header admin panel -->
+        <div class="row justify-content-between align-items-center p-3 bg-info">
+            <div class="col-1 app-header__logo">
+                <img class="img-fluid" src="{{ asset('build/images/LogoCodeInit3.png') }}">
+            </div>
+            <!-- menu Navbar  du systeme d'administration afin de se deconnecter  -->
+            <span onclick="openSlide()" class="spanNav col-1"><i class="fa fa-bars fa-1x"></i></span>
+            <div id="mySidenav" class="sidenav">
+
+                <a href="javascript:void(0)" class="closebtn" onclick="closeSlide()">&times;</a>
+                <ul>
+                    <li class="my-4">
+                        <a href="#nav" Class="text-white">Se</a>
+                    </li>
+                    <li class="my-4">
+                        <a href="#rea" Class="text-white">Réalisation</a>
+                    </li>
+                    <li class="my-4">
+                        <a href="#foot" Class="text-white">Link</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <!-- left Side Bar -->
+            <div class="col-3 app-sidebar sidebar-shadow">
+                <div class="scrollbar-sidebar">
+                    <!-- lien pour la gestion des entités de code init -->
+                    <div class="sidebar-menu">
+                        <ul class="text-decoration-none">
+                            <li class="text-center text-white text-uppercase my-3">
+                                <i class="fa fa-tachometer-alt"></i>
+                                <span>General</span>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="#">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <span>Utilisateur</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('app_admin_user') }}">Liste des Utilisateur</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('app_add_user') }}">Ajouter</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="#">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>E-commerce</span>
+                                    <span class="badge badge-pill badge-danger">3</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">Products </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Orders</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Credit cart</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="#">
+                                    <i class="far fa-gem"></i>
+                                    <span>Components</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">General</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Panels</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Tables</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Icons</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Forms</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                {% block body %}{% endblock %}
+                <div>
+                    {% endblock %} {% block menuEnd %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

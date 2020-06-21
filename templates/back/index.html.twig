@@ -1,0 +1,71 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/cdn/glyphicons-1.9.1.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/cdn/bootstrap-toggle-2.2.2.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/footable.bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('admin_panel') }}
+    {% endblock %}
+
+    {% block link %}{% endblock %}
+
+    <title>Code Init - {% block title %}{% endblock %}</title>
+</head>
+<body>
+{% block menuStart %}{% endblock %}
+    <div>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('warning') %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% block menuEnd %}{% endblock %}
+<script src="{{ asset('js/sideNav.js') }}"></script>
+
+{% block javascripts %}
+
+{% endblock %}
+
+<style>
+    :root {
+        --couleur-principale: #808080;
+        --couleur-secondaire:  #1f3145;
+        --bleu-petrole:       #035164;
+        --rose:               #E2007A;
+        --noir:               #000;
+        --blanc:              #FFF;
+        --white:              #FFF;
+        --blanc-casser:       #f1f4f6;
+        --gris-clair:         #CCCCCB;
+        --gris-moyen:         #828594;
+        --orange:             #F29400;
+        --orange-theme:       #eb691d;
+        --couleur-p-sombre:   #1e7886;
+        --couleur-p-clair:    #50b5c5;
+        --rose-sombre:        #cb016e;
+    }
+</style>
+</body>
+</html>

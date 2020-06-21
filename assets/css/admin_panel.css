@@ -1,0 +1,80 @@
+@import '~bootstrap';
+
+/* General */
+
+html,body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 90vh;
+}
+li{
+    list-style: none;
+}
+li a{
+    color: var(--white);
+}
+/* [FIN] General */
+
+/* side bar */
+
+.spanNav{
+    font-size:30px;
+    cursor: pointer;
+    color: #fff;
+    font-family:'Lato',sans-serif;
+    float: right;
+    padding: 20px
+}
+
+.sidenav {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.45);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align:center;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sidenav div{
+    width:20%;
+    margin: 0 20px;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+/* [FIN] right-sidebar */
+
+/* right-sidebar */
+.app-sidebar{
+    width: 250px;
+    min-width: 250px;
+    overflow: auto;
+    background-color: var(--couleur-secondaire);
+}
+/* [FIN] right-sidebar */
+
+/* Tableau */
+
+.table-head{
+    background-color: #9fcdd4!important;
+    color: var(--noir)!important;
+    font-size: 0.85em!important;
+}
+.table-head tr th{
+    padding: 0.4em!important;
+    font-weight: 600!important;
+}
