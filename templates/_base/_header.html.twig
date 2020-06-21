@@ -1,20 +1,7 @@
-
-    <header class="container-fluid">
-        <div class="row">
+<header class="container-fluid">
+        <div class="row py-3" style="background: linear-gradient(180deg,#67A8FF,#66C7FF,#65E9FF)">
             <div class="col-1">
-                <img src="" class="img-fluid">
-            </div>
-            <span onclick="openSlide()" class="col-1"><i class="fa fa-bars fa-2x"></i></span>
-            <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeSlide()">&times;</a>
-                <ul>
-                    <li>Accueil</li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+                <img src="{{ asset('build/images/LogoCodeInit2.png') }}" class="img-fluid">
             </div>
         </div>
-    </header>
-    {% block body %}
-    {% endblock %}
+</header>

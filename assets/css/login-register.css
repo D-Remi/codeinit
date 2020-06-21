@@ -1,0 +1,45 @@
+/* General */
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    height: 100vh;
+}
+.font-1{
+    font-family: 'Baloo 2', cursive;
+}
+
+.font-2{
+    font-family: 'Lato', sans-serif;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+}
+.input__inner{
+    width: 250px!important;
+    border-radius: 20px!important;
+}
+.color-init{
+    background-color: rgba(112,112,112,0.12);
+}
+
+.btn-init{
+    background: linear-gradient(180deg,#67A8FF,#66C7FF,#65E9FF);
+    border-radius: 20px;
+    text-decoration: none;
+}
+/* [Fin] General */
+
+/* Login style */
+
+/* [Fin] Login style */
+
+/* Register style */
+.pseudoname .input__inner{
+    width: 520px!important;
+    margin: 0 auto;
+}
+
+/* [Fin] Register style */

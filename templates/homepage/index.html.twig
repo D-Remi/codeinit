@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Code init{% endblock %}
+{% block link %}<link rel="stylesheet" href="{{ asset('build/homepage.css') }}">{% endblock %}
 
 {% block body %}
     <header>
-        <div class="row">
+        <div class="row align-items-center justify-content-between p-3">
             <div class="col-1">
                 <img src="{{ asset('build/images/LogoCodeInit2.png') }}" class="img-fluid">
             </div>
-            <span onclick="openSlide()" class="col-1"><i class="fa fa-bars fa-2x"></i></span>
+            <span onclick="openSlide()" class="spanNav col-1"><i class="fa fa-bars fa-1x"></i></span>
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeSlide()">&times;</a>
                 <ul>
@@ -23,47 +24,47 @@
                 </ul>
             </div>
         </div>
-        <div class="row">
-            <div class="col-6 offset-6">
-                <img src="{{ asset('build/images/LogoCodeInit.png') }}" class="img-fluid">
-                <h1>
+        <div class="row mx-4 justify-content-start">
+            <div class="col-6 pt-5">
+                <img src="{{ asset('build/images/LogoCodeInit.png') }}" class="col-4 pt-5 img-fluid">
+                <h1 class="my-3 font-1 text-white">
                     Initiation a la programmation
-                    <br>web et jeux videos
+                    <br>web et jeux vidéos
                 </h1>
-                <a href="#" class="btn-init">Débuter</a>
+                <a href="#service" class="btn-init-white font-2 text-white text-uppercase text-transform-none h5 px-3">Débuter</a>
             </div>
         </div>
     </header>
     <main>
         <section class="container-fluid">
-            <h2 class="text-center">La réference de code init</h2>
-            <hr class="col-3 border">
+            <h2 class="my-3 text-center font-1 text-dark">La réference de code init</h2>
+            <hr class="col-3">
             <p class="text-center">
 
                 <br>
                 <br>
             </p>
             <div class="row">
-                <div class="col-4">
-                    <img src="{{ asset('build/images/RealisationDeProjets.png') }}" class="img-fluid">
-                    <strong>réalisations de projets</strong>
-                    <span>On apprend à coder en s'amusant</span>
+                <div class="col-4 text-center">
+                    <div class="p-5"><img src="{{ asset('build/images/RealisationDeProjets.png') }}" class="img-fluid"></div>
+                    <strong class=" font-2 text-uppercase text-dark">réalisations de projets</strong><br>
+                    <span class="font-1">On apprend à coder en s'amusant</span>
                 </div>
-                <div class="col-4">
-                    <img src="{{ asset('build/images/ApprentissagePasAPas.png') }}" class="img-fluid">
-                    <strong>Apprentissage pas à pas</strong>
-                    <span>chacun a son rythme</span>
+                <div class="col-4 text-center">
+                    <div class="p-5"><img src="{{ asset('build/images/ApprentissagePasAPas.png') }}" class="img-fluid"></div>
+                    <strong class="mt-2 font-2 text-uppercase text-dark">Apprentissage pas à pas</strong><br>
+                    <span class="font-1">chacun a son rythme</span>
                 </div>
-                <div class="col-4">
-                    <img src="{{ asset('build/images/DesCoursPersonnalises.png') }}" class="img-fluid">
-                    <strong>des cours personnalisés</strong>
-                    <span>des cours pour chaque profils</span>
+                <div class="col-4 text-center">
+                    <div class="p-5"><img src="{{ asset('build/images/DesCoursPersonnalises.png') }}" class="img-fluid"></div>
+                    <strong class="mt-2 font-2 text-uppercase text-dark">des cours personnalisés</strong><br>
+                    <span class="font-1">des cours pour chaque profils</span>
                 </div>
             </div>
         </section>
         <section class="container-fluid">
-            <h2 class="text-center">La réference de code init</h2>
-            <hr class="col-3 border">
+            <h2 id="service" class="my-3 text-center font-1 text-dark">Nos programmes</h2>
+            <hr class="col-3">
             <p class="text-center">
 
                 <br>
@@ -72,9 +73,9 @@
             <div class="row text-center text-white">
                 {% for product in products %}
                     <div class="col-4 py-5" style="background-image:url({{ asset('build/images/' ~ product.image) }})">
-                        <h3 class="text-uppercase text-center pt-2">{{ product.name }}</h3>
-                        <ul>
-                            <li>{{ product.content }}</li>
+                        <h3 class="text-uppercase font-2 text-center pt-2">{{ product.name }}</h3>
+                        <ul class="font-1">
+                            <li class="text-center">{{ product.content }}</li>
                             <li>{{ product.content1 }}</li>
                             <li>{{ product.content2 }}</li>
                             <li>{{ product.content3 }}</li>
@@ -85,29 +86,32 @@
             </div>
         </section>
         <section class="container my-5">
-            <div class="row py-5 wrapper-doc justify-content-around">
-                <div class="col-3 text-white font-weight-bold mr-3">Recevoir notre documentation</div>
-                <div class="col-3">
-                    <input type="text" placeholder="Votre email">
-                    <input type="submit" value="envoyer" class="btn-init-white">
+            <div class="row py-5 wrapper-doc justify-content-around align-items-center">
+                <div class="col-7 text-white font-weight-bold font-1 h1">Recevoir notre documentation</div>
+                <div class="col-4">
+                    <input type="text" class="input__inner font-1 border-0 px-2" placeholder="Votre email">
+                    <a class="btn-init-white font-1 text-white px-1">ENVOYER</a>
                 </div>
             </div>
         </section>
         <section class="container my-3">
             <div class="row">
-                <div class="col-6">
-                    <h3>Contacter-nous</h3>
-                    <hr class="col-3 border">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium at cum eaque eligendi, et explicabo facere id libero, modi neque non officiis
-                        possimus repellendus sapiente sint tenetur unde veniam.</p>
+                <div class="col-6 font-1">
+                    <h3 class="text-center">Contacter-nous</h3>
+                    <hr class="col-3">
+                    <p class="pr-5">Afin de recevoir une réponse adaptée à toutes vos interrogations vous pouvez utiliser le formulaire de contact.
+                        vous recevrais ainsi un email du professionnel qui sera vous orienter dans le meilleur service..
+                    </p>
                 </div>
                 <div class="col-6">
-                    <input type="text">
-                    <input type="text"><br>
-                    <input type="text">
-                    <input type="text"><br>
-                    <textarea name="text" id="text-us" cols="30" rows="10"></textarea>
-                    <input type="submit" value="envoyer">
+                    <input class="input__inner color-init mb-3 border-0 font-1 px-2" placeholder="Votre Nom" type="text">
+                    <input class="input__inner color-init mb-3 border-0 font-1 px-2" placeholder="Votre Prénom" type="text"><br>
+                    <input class="input__inner color-init mb-3 border-0 font-1 px-2" placeholder="Votre Email" type="text">
+                    <input class="input__inner color-init mb-3 border-0 font-1 px-2" placeholder="Objet" type="text"><br>
+                    <textarea name="text" class="color-init border-5 mb-3 font-1 px-2" placeholder="Votre message" id="text-us" cols="60" rows="5"></textarea><br>
+                    <div class="text-center">
+                        <a class="btn-init font-1 text-white px-3 text-center h5">ENVOYER</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -115,7 +119,7 @@
     <footer class="container-fluid">
         <div class="row bg-dark align-items-center justify-content-between py-2">
             <div class="col-1"><img src="{{ asset('build/images/LogoCodeInit.png') }}" class="img-fluid"></div>
-            <div class="col-1">Code Init &#8212 | <a href="#">Mentions légales</a></div>
+            <div class="col-3 font-1 text-white">Code Init &copy 2020 | <a href="#" class="text-white text-transform-none">Mentions légales</a></div>
         </div>
     </footer>
 {% endblock %}

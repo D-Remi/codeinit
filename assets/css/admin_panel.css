@@ -61,6 +61,7 @@ li a{
 /* right-sidebar */
 .app-sidebar{
     width: 250px;
+    height: 90.2vh;
     min-width: 250px;
     overflow: auto;
     background-color: var(--couleur-secondaire);

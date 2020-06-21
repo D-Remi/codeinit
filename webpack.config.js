@@ -25,6 +25,8 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addStyleEntry('admin_panel', './assets/css/admin_panel.css')
+    .addStyleEntry('homepage', './assets/css/homepage.css')
+    .addStyleEntry('login-register', './assets/css/login-register.css')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

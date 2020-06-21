@@ -1,6 +1,7 @@
-{% extends '_base/_header.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
+    {% include '_base/_header.html.twig' %}
     <h1>Mes programmes</h1>
         <div class="container">
             <div class="row">
@@ -13,4 +14,5 @@
                 <a href="{{ path('app_product', {'id': product.id}) }}?addCart=true" class="btn btn-primary">Ajouter</a>
             </div>
         </div>
+    {% include '_base/_footer.html.twig' %}
 {% endblock %}

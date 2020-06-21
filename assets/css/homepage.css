@@ -1,0 +1,79 @@
+.btn-init{
+background: linear-gradient(180deg,#67A8FF,#66C7FF,#65E9FF);
+border-radius: 20px;
+text-decoration: none;
+}
+
+.btn-init-white{
+border-radius: 20px;
+border: 1px white solid;
+}
+
+.color-init{
+    background-color: rgba(112,112,112,0.12);
+}
+/* Header */
+header{
+background-image: url("../../public/build/images/Accueil.png");
+height: 100vh;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: top left;
+}
+/* side bar */
+
+.spanNav{
+    font-size:30px;
+    cursor: pointer;
+    color: #fff;
+    font-family:'Lato',sans-serif;
+    float: right;
+    padding: 20px
+}
+
+.sidenav {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.45);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align:center;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sidenav div{
+    width:20%;
+    margin: 0 20px;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+/* Main */
+
+.wrapper-doc{
+background: linear-gradient(180deg,#67A8FF,#66C7FF,#65E9FF);
+border-radius: 20px;
+}
+
+.input__inner{
+    width: 250px;
+    border-radius: 20px;
+}
+
+textarea{
+    resize: none!important;
+    border-radius: 20px!important;
+    border: none!important;
+}
