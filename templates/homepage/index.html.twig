@@ -1,33 +1,36 @@
+{# Balise extend afin herité du fichier base.html.twig  #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Code init{% endblock %}
+{# block correspond a la feuille de style #}
 {% block link %}<link rel="stylesheet" href="{{ asset('build/homepage.css') }}">{% endblock %}
 
 {% block body %}
     <header>
         <div class="row align-items-center justify-content-between p-3">
-            <div class="col-1">
+            <div class="col-lg-2 small-4 xSmall-2 medium-2">
                 <img src="{{ asset('build/images/LogoCodeInit2.png') }}" class="img-fluid">
             </div>
-            <span onclick="openSlide()" class="spanNav col-1"><i class="fa fa-bars fa-1x"></i></span>
+            <span onclick="openSlide()" class="spanNav col-1 small-4 xSmall-2 medium-2"><i class="fa fa-bars fa-1x"></i></span>
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeSlide()">&times;</a>
                 <ul>
                     <li>Accueil</li>
-                    <li></li>
+                    <li><a href="{{ path('app_cart') }}">Mon Panier</a></li>
                     {% if app.user %}
                         <li><a href="{{ path('profile') }}">Mon Profile</a></li>
                         <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                    {% else %}
+                        <li><a href="{{ path('app_register') }}">Inscription</a></li>
+                        <li><a href="{{ path('app_login') }}">Connexion</a></li>
                     {% endif %}
-                    <li><a href="{{ path('app_register') }}">Inscription</a></li>
-                    <li><a href="{{ path('app_login') }}">Connexion</a></li>
                 </ul>
             </div>
         </div>
         <div class="row mx-4 justify-content-start">
-            <div class="col-6 pt-5">
-                <img src="{{ asset('build/images/LogoCodeInit.png') }}" class="col-4 pt-5 img-fluid">
-                <h1 class="my-3 font-1 text-white">
+            <div class="col-6 col-md-8 pt-5">
+                <img src="{{ asset('build/images/LogoCodeInit.png') }}" class="col-4 col-md-6 pt-5 img-fluid">
+                <h1 class="my-3 font-1 text-white border size-1">
                     Initiation a la programmation
                     <br>web et jeux vidéos
                 </h1>
@@ -40,7 +43,6 @@
             <h2 class="my-3 text-center font-1 text-dark">La réference de code init</h2>
             <hr class="col-3">
             <p class="text-center">
-
                 <br>
                 <br>
             </p>
@@ -85,11 +87,11 @@
                 {% endfor %}
             </div>
         </section>
-        <section class="container my-5">
+        <section class="container my-5 hide">
             <div class="row py-5 wrapper-doc justify-content-around align-items-center">
-                <div class="col-7 text-white font-weight-bold font-1 h1">Recevoir notre documentation</div>
-                <div class="col-4">
-                    <input type="text" class="input__inner font-1 border-0 px-2" placeholder="Votre email">
+                <div class="col-7 col-md-6 text-white font-weight-bold font-1 h1 size-1">Recevoir notre documentation</div>
+                <div class="col-4 col-md-5">
+                    <input type="text" class="input__inner font-1 border-0 px-2 " placeholder="Votre email">
                     <a class="btn-init-white font-1 text-white px-1">ENVOYER</a>
                 </div>
             </div>
@@ -104,22 +106,31 @@
                     </p>
                 </div>
                 <div class="col-6">
-                    <input class="input__inner color-init mb-3 border-0 font-1 px-2" placeholder="Votre Nom" type="text">
-                    <input class="input__inner color-init mb-3 border-0 font-1 px-2" placeholder="Votre Prénom" type="text"><br>
-                    <input class="input__inner color-init mb-3 border-0 font-1 px-2" placeholder="Votre Email" type="text">
-                    <input class="input__inner color-init mb-3 border-0 font-1 px-2" placeholder="Objet" type="text"><br>
-                    <textarea name="text" class="color-init border-5 mb-3 font-1 px-2" placeholder="Votre message" id="text-us" cols="60" rows="5"></textarea><br>
-                    <div class="text-center">
-                        <a class="btn-init font-1 text-white px-3 text-center h5">ENVOYER</a>
+                    {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                    <div class="row justify-content-around">
+                        {{ form_widget(form.name, {'attr': {'class': 'col-6 border input__inner color-init mb-3 border-0 font-1 px-2 ','placeholder': 'Votre Nom' }}) }}
+                        {{ form_widget(form.firstName, {'attr': {'class': 'col-6 input__inner color-init mb-3 border-0 font-1 px-2','placeholder': 'Votre prénom' }}) }}
                     </div>
+                    <div class="row justify-content-between">
+                        {{ form_widget(form.email, {'attr': {'class': 'col-6 input__inner color-init mb-3 border-0 font-1 px-2','placeholder': 'Votre Email' }}) }}
+                        {{ form_widget(form.Object, {'attr': {'class': 'col-6 input__inner color-init mb-3 border-0 font-1 px-2','placeholder': 'Objet' }}) }}
+                    </div>
+                    <div class="row">
+                        {{ form_widget(form.message, {'attr': {'class': 'color-init border-5 mb-3 font-1 px-2','placeholder': 'Votre Message' }}) }}
+                    </div>
+                    <div class="text-center">
+                        <button class="btn-init font-1 text-white px-3 text-center h5">ENVOYER</button>
+                    </div>
+                    {{ form_end(form)}}
                 </div>
             </div>
         </section>
     </main>
     <footer class="container-fluid">
         <div class="row bg-dark align-items-center justify-content-between py-2">
-            <div class="col-1"><img src="{{ asset('build/images/LogoCodeInit.png') }}" class="img-fluid"></div>
-            <div class="col-3 font-1 text-white">Code Init &copy 2020 | <a href="#" class="text-white text-transform-none">Mentions légales</a></div>
+            <div class="col-1 col-md-2"><img src="{{ asset('build/images/LogoCodeInit.png') }}" class="img-fluid"></div>
+            <div class="col-3 col-md-4 font-1 text-white">Code Init &copy 2020 | <a href="#" class="text-white text-transform-none">Mentions légales</a></div>
         </div>
     </footer>
 {% endblock %}

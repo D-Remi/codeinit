@@ -1,0 +1,18 @@
+{% extends 'back/dashboard/menu.html.twig' %}
+
+{% block title %}Code Init{% endblock %}
+
+{% block body %}
+
+
+                <h2 class="text-center">Modifier un service</h2>
+                <p>Bienvenue sur votre plateforme d'aministration en ligne de Code Init</p>
+                <div>{{ include('back/product/form.html.twig') }}</div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-validation"><i class="far fa-save btn-icon-validation"></i>Enregistrer</button>
+                </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

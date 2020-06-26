@@ -24,5 +24,9 @@
     {% endfor %}
     {% block body %}{% endblock %}
     {% include '_base/_footer.html.twig' %}
+    {% block javascripts %}
+        {{ encore_entry_link_tags('app') }}
+        <script src="{{ asset('js/sideNav.js') }}"></script>
+    {% endblock %}
 </body>
 </html>

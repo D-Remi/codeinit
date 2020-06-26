@@ -3,9 +3,9 @@
 {% block title %}{% endblock %}
 
 {% block menuStart %}
-    <div class="container-fuild">
+    <div class="container-fuild p-0 m-0">
         <!-- Header admin panel -->
-        <div class="row justify-content-between align-items-center p-3 bg-info">
+        <div class="row justify-content-between align-items-center p-3 bg-info m-0">
             <div class="col-1 app-header__logo">
                 <img class="img-fluid" src="{{ asset('build/images/LogoCodeInit3.png') }}">
             </div>
@@ -27,7 +27,7 @@
                 </ul>
             </div>
         </div>
-        <div class="row justify-content-between">
+        <div class="row justify-content-between m-0 p-0">
             <!-- left Side Bar -->
             <div class="col-3 app-sidebar sidebar-shadow">
                 <div class="scrollbar-sidebar">
@@ -57,19 +57,36 @@
                             <li class="sidebar-dropdown">
                                 <a href="#">
                                     <i class="fa fa-shopping-cart"></i>
-                                    <span>E-commerce</span>
+                                    <span>Les Commande</span>
                                     <span class="badge badge-pill badge-danger">3</span>
                                 </a>
                                 <div class="sidebar-submenu">
                                     <ul>
                                         <li>
-                                            <a href="#">Products </a>
+                                            <a href="{{ path('app_admin_order') }}">Liste des commande </a>
                                         </li>
                                         <li>
-                                            <a href="#">Orders</a>
+                                            <a href="{{ path('app_add_order') }}">Add</a>
                                         </li>
                                         <li>
                                             <a href="#">Credit cart</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a href="#">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <span>Les Service</span>
+                                    <span class="badge badge-pill badge-danger">3</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="{{ path('app_admin_product') }}">Liste des Produit </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('app_add_product') }}">Add</a>
                                         </li>
                                     </ul>
                                 </div>

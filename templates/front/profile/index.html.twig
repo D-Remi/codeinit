@@ -25,7 +25,9 @@
             <p>Email: <input type="text" value="{{ app.user.username }}" class="input-group"></p>
         </div>
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
+            {% for order in app.user.orders  %}
+               <p>{{ order.id }}</p>
+            {% endfor %}
 
 
         </div>

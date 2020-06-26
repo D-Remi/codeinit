@@ -1,0 +1,48 @@
+{% extends 'back/dashboard/menu.html.twig' %}
+
+{% block title %}Code Init{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+<div class="container-fuild px-3">
+    <div class="row my-3">
+        <div class="col-12">
+            <h3>Liste des utilisateurs</h3>
+            <table class="table table-striped table-hover">
+                <thead class="text-center">
+                <tr style="background-color: #9fcdd4;font-size: 0.85em">
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Object</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.id }}</td>
+                        <td>{{ contact.name }}</td>
+                        <td>{{ contact.firstName }}</td>
+                        <td>{{ contact.object }}</td>
+                        <td>{{ contact.email }}</td>
+                        <td>
+                            <a class="text-secondary" href=""><i class="fas fa-pencil-alt"></i></a>
+                            <a  class="text-danger" href="" ><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="bloc-de-bouton">
+                <a type="button" href="{{ path('app_admin') }}" class="btn btn-primary"><i class="btn-icon fas fa-angle-left"></i>Retour</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

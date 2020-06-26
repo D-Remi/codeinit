@@ -40,6 +40,48 @@ class Product
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+    private $cover;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $cover2;
+
+    /**
+     * @return mixed
+     */
+    public function getCover2()
+    {
+        return $this->cover2;
+    }
+
+    /**
+     * @param mixed $cover2
+     */
+    public function setCover2($cover2): void
+    {
+        $this->cover2 = $cover2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * @param mixed $cover
+     */
+    public function setCover($cover): void
+    {
+        $this->cover = $cover;
+    }
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
     private $content1;
 
     /**
@@ -51,6 +93,11 @@ class Product
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $content3;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $description;
 
     public function getId(): ?int
     {
@@ -137,6 +184,18 @@ class Product
     public function setContent3(?string $content3): self
     {
         $this->content3 = $content3;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

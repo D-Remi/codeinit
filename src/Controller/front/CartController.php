@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CartController extends AbstractController
 {
     /**
-     * @Route("/cart", name="cart")
+     * @Route("/cart", name="app_cart")
      */
     public function index(Request $request)
     {
@@ -32,6 +32,7 @@ class CartController extends AbstractController
                 $order->addProduct($product);
             }
         }
+
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
 
@@ -44,7 +45,7 @@ class CartController extends AbstractController
 
         return $this->render('front/cart/index.html.twig', [
             'products' => $products,
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 }
