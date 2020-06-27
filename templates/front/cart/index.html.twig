@@ -2,20 +2,29 @@
      <title>Mon Panier</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
+        <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     {% endblock %}
 </head>
 
 <body>
     {% include '_base/_header.html.twig' %}
+    <style>
+        .taille{
+            width: 200%;
+        }
+    </style>
     <div class="container-fuild">
-        <div class="row my-3 px-3">
+        <div class="row my-3 px-3 mx-0">
             <div class="col-12">
-                <h3>Mon Paniers</h3>
                 {% if products == null %}
-                    <h1>Aucun Produit</h1>
+                    <div class="row mx-0 justify-content-center align-items-center flex-column" style="height: 68.6vh">
+                        <div><i class="fa fa-shopping-cart fa-10x text-secondary text-center" aria-hidden="true"></i></div>
+                        <h3 class="text-center text-secondary">Votre Panier est vide</h3>
+                    </div>
                 {% else %}
-                    <table class="table table-striped table-hover">
-                        <thead class="text-center">
+                    <div class="row" style="height: 72vh">
+                        <table class="table table-striped table-hover">
+                            <thead class="text-center">
                             <tr style="background-color: #9fcdd4;font-size: 0.85em">
                                 <th>Numero de commande</th>
                                 <th>Image du service</th>
@@ -24,27 +33,64 @@
                                 <th>Price</th>
                                 <th>Actions</th>
                             </tr>
-                        </thead>
-                        <tbody class="text-center">
+                            </thead>
+                            <tbody class="text-center">
                             {% for product in products %}
-                             <tr>
-                                 <td>{{ product.id }}</td>
-                                 <td>
-                                     <div style="width: 150px;height: 150px"><img src="{{ asset('build/images/' ~ product.image) }}" class="img-fluid"></div>
-                                 </td>
-                                 <td>{{ product.name }}</td>
-                                 <td>{{ product.content }}</td>
-                                 <td>{{ product.price }}</td>
-                                 <td></td>
-                             </tr>
+                                <tr>
+                                    <td>{{ product.id }}</td>
+                                    <td>
+                                        {% if product.id == 1 %}
+                                            <img src="{{ asset('build/images/education-edtech.png') }}" class="" style="height: 100px;width: 100px">
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ product.name }}</td>
+                                    <td>{{ product.content }}</td>
+                                    <td>{{ product.price }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger">
+                                            <span class="fa fa-remove"></span> Supprimer
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td><h5>total</h5></td>
+                                    <td class="text-center"><h5><strong>€{{ product.price }}</strong></h5></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Valider</a>
+                                    </td>
+                                    <td><a type="reset" href="{{ path( 'homepage' ) }}" class="btn btn-danger">Retour</a></td>
+                                </tr>
                             {% endfor %}
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                        <div class="collapse" id="collapseExample">
+                            <h3>Veuillez passer commande en inscrivant vos choix</h3>
+                            {{ form_start(formOrder, {'attr': {'class': 'row justify-content-between align-items-center border mx-0 py-2 taille'}}) }}
+                            <div class="col-4">email:{{ form_widget(formOrder.email,{'attr': {'value': app.user.email}}) }}</div>
+                            <div class="col-3">date de debut souhaiter:{{ form_widget(formOrder.startDate) }}</div>
+                            <div class="col-2"><input type="submit" value="Commander" class="btn btn-success"></div>
+                            {{ form_end(formOrder) }}
+                        </div>
+                    </div>
                 {% endif %}
             </div>
         </div>
     </div>
     {% include '_base/_footer.html.twig' %}
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 
 

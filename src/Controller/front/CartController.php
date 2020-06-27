@@ -25,18 +25,16 @@ class CartController extends AbstractController
         $products = array();
         $total = 0;
         if ($session->get('cart')) {
-            foreach ($session->get('cart') as $cart) {
-                $product = $em->getRepository(Product::class)->find($cart);
-                $products[] = $product;
-                $total = $total + $product->getPrice();
-                $order->addProduct($product);
-            }
+            $product = $em->getRepository(Product::class)->find($cart);
+            $products[] = $product;
+            $total = $total + $product->getPrice();
+
         }
 
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
 
-        if($request->isMethod('POST') && $form->isValid()){
+        if($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()){
             $em->persist($order);
             $em->flush();
 
@@ -45,7 +43,7 @@ class CartController extends AbstractController
 
         return $this->render('front/cart/index.html.twig', [
             'products' => $products,
-            'form' => $form->createView(),
+            'formOrder' => $form->createView(),
         ]);
     }
 }

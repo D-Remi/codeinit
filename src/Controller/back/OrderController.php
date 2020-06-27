@@ -60,7 +60,7 @@ class OrderController extends AbstractController
                                Request  $request
     )
     {
-        // je recupere les donnée utilisateur grace a l'id
+        // je recupere les donnée de la commande grace a l'id
         $order = $orderRepository->find($id);
 
         $form = $this->createFormBuilder($order)

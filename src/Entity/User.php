@@ -25,6 +25,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message = "email n'est pas un mail valide")
      */
     private $email;
 
@@ -36,23 +37,32 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\Length(min = 5, minMessage = "Le mot de passe doit contenir au minimum 5 caractères")
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\Length(max = 255, maxMessage = "Le nom ne doit pas dépasser {{ limit }} caractères")
+     * @Assert\Length(max = 30, maxMessage = "Le nom ne doit pas dépasser 30 caractères")
+     * @Assert\Length(min = 3, minMessage = "Le nom doit contenir au minimum 3 caractères")
      * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max = 30, maxMessage = "Le prénom ne doit pas dépasser 30 caractères")
+     * @Assert\Length(min = 3, minMessage = "Le prénom doit contenir au minimum 3 caractères")
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max = 30, maxMessage = "Le pseudo ne doit pas dépasser 30 caractères")
+     * @Assert\Length(min = 3, minMessage = "Le pseudo doit contenir au minimum 3 caractères")
+     * @Assert\NotBlank(message="Ce champ est obligatoire")
      */
     private $pseudoName;
 

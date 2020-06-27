@@ -31,7 +31,7 @@ class HomepageController extends AbstractController
             $em->flush();
         }
 
-        return $this->render('homepage/index.html.twig',[
+        return $this->render('front/homepage/index.html.twig',[
             'products' => $produtcs,
             'form'=> $form->createView()
         ]);

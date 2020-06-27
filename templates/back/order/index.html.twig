@@ -13,6 +13,7 @@
                             <tr style="background-color: #9fcdd4;font-size: 0.85em">
                                 <th>Id</th>
                                 <th>email</th>
+                                <th>Produit</th>
                                 <th>date de la commande</th>
                                 <th>dates de debut</th>
                                 <th>Actions</th>
@@ -23,6 +24,12 @@
                                 <tr>
                                     <td>{{ order.id }}</td>
                                     <td>{{ order.email }}</td>
+                                    {% if order.product.name != null%}
+                                        <td>{{ order.product.name }}</td>
+                                    {% else %}
+                                        <td>vide</td>
+                                    {% endif %}
+
                                     <td>{{ order.datetime | date }}</td>
                                     <td>{{ order.startDate | date }}</td>
                                     <td>

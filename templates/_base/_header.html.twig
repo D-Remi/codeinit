@@ -1,5 +1,47 @@
+<style>
+    /* side bar */
+
+    .spanNav{
+        font-size:30px;
+        cursor: pointer;
+        color: #fff;
+        font-family:'Lato',sans-serif;
+        float: right;
+        padding: 20px
+    }
+
+    .sidenav {
+        height: 100vh;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.45);
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        text-align:center;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sidenav div{
+        width:20%;
+        margin: 0 20px;
+    }
+
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+</style>
 <header class="container-fluid p-0 m-0">
-        <div class="row py-3 m-0" style="background: linear-gradient(180deg,#67A8FF,#66C7FF,#65E9FF)">
+        <div class="row py-2 m-0 justify-content-between align-items-center" style="background: linear-gradient(180deg,#67A8FF,#66C7FF,#65E9FF)">
             <div class="col-lg-1 col-md-2 small-6 medium-6 xSmall-6">
                 <img src="{{ asset('build/images/LogoCodeInit2.png') }}" class="img-fluid">
             </div>

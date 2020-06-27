@@ -8,7 +8,30 @@
         <div class="row my-3">
             <div class="col-12">
                 <h2>Tableau de Bord</h2>
-                <p>Bienvenue sur votre plateforme d'aministration en ligne de Code Init</p>
+                <p>Bienvenue {{ app.user.firstName }} sur votre plateforme d'aministration en ligne de Code Init</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 bg-primary pt-2">
+                <div class="col-2"><i class="py-1 fa fa-users fa-4x text-white"></i></div>
+                <div class="text-white text-right">
+                    <h3>{{ userCount }}</h3>
+                </div>
+                <h3 class="text-white">Utilisateurs</h3>
+            </div>
+            <div class="col-4 bg-warning pt-2">
+                <div class="col-2"><i class="py-1 fa fa-comment fa-4x text-white"></i></div>
+                <div class="text-white text-right">
+                    <h3>{{ contactCount }}</h3>
+                </div>
+                <h3 class="text-white">Messages</h3>
+            </div>
+            <div class="col-4 bg-secondary pt-2">
+                <div class="col-2"><i class="py-1 fa fa-shopping-cart fa-4x text-white"></i></div>
+                <div class="text-white text-right">
+                    <h3>{{ orderCount }}</h3>
+                </div>
+                <h3 class="text-white">Commandes</h3>
             </div>
         </div>
     </div>
