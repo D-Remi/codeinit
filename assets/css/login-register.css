@@ -22,7 +22,7 @@ footer{
     border-radius: 20px!important;
 }
 .color-init{
-    background-color: rgba(112,112,112,0.12);
+    background-color: rgba(112,112,112,0.12)!important;
 }
 
 .btn-init{

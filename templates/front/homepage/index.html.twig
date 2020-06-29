@@ -15,17 +15,17 @@
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeSlide()">&times;</a>
                 <ul>
-                    <li>Accueil</li>
-                    <li><a href="{{ path('app_cart') }}">Mon Panier</a></li>
+                    <li><a href="{{ path('homepage') }}" class="text-white">Accueil</a></li>
+                    <li><a href="{{ path('app_cart') }}" class="text-white">Mon Panier</a></li>
                     {% if app.user %}
-                        <li><a href="{{ path('profile') }}">Mon Profil</a></li>
-                        {% if app.user == "ROLE_ADMIN" %}
-                            <li><a href="{{ path('app_admin') }}"></a></li>
+                        <li><a href="{{ path('profile') }}" class="text-white">Mon Profil</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a href="{{ path('app_admin') }}" class="text-white">Panel Admin</a></li>
                         {% endif %}
-                        <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                        <li><a href="{{ path('app_logout') }}" class="text-white">Déconnexion</a></li>
                     {% else %}
-                        <li><a href="{{ path('app_register') }}">Inscription</a></li>
-                        <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                        <li><a href="{{ path('app_register') }}" class="text-white">Inscription</a></li>
+                        <li><a href="{{ path('app_login') }}" class="text-white">Connexion</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -33,7 +33,7 @@
         <div class="row mx-4 justify-content-start">
             <div class="col-6 col-md-8 pt-5">
                 <img src="{{ asset('build/images/LogoCodeInit.png') }}" class="col-4 col-md-6 pt-5 img-fluid">
-                <h1 class="my-3 font-1 text-white border size-1">
+                <h1 class="my-3 font-1 text-white size-1">
                     Initiation a la programmation
                     <br>web et jeux vidéos
                 </h1>
@@ -45,9 +45,9 @@
         <section class="container-fluid">
             <h2 class="my-3 text-center font-1 text-dark">La réference de code init</h2>
             <hr class="col-3">
-            <p class="text-center">
-                <br>
-                <br>
+            <p class="text-center font-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                <br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
             <div class="row">
                 <div class="col-4 text-center">
@@ -70,21 +70,20 @@
         <section class="container-fluid">
             <h2 id="service" class="my-3 text-center font-1 text-dark">Nos programmes</h2>
             <hr class="col-3">
-            <p class="text-center">
-
-                <br>
-                <br>
+            <p class="text-center font-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                <br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
             <div class="row text-center text-white">
                 {% for product in products %}
                     <div class="col-4 py-5" style="background-image:url({{ asset('build/images/' ~ product.image) }})">
                         <h3 class="text-uppercase font-2 text-center pt-2">{{ product.name }}</h3>
-                        <ul class="font-1">
-                            <li class="text-center">{{ product.content }}</li>
-                            <li>{{ product.content1 }}</li>
-                            <li>{{ product.content2 }}</li>
-                            <li>{{ product.content3 }}</li>
-                        </ul>
+                        <div class="font-1 text-center">
+                            <div>{{ product.content }}</div>
+                            <div>{{ product.content1 }}</div>
+                            <div>{{ product.content2 }}</div>
+                            <div class="mb-3">{{ product.content3 }}</div>
+                        </div>
                         <a href="{{ path('app_product', {'id': product.id}) }}" class="btn-init py-1 px-3 text-white text-uppercase">En savoir plus</a>
                     </div>
                 {% endfor %}
@@ -133,7 +132,7 @@
     <footer class="container-fluid">
         <div class="row bg-dark align-items-center justify-content-between py-2">
             <div class="col-1 col-md-2"><img src="{{ asset('build/images/LogoCodeInit.png') }}" class="img-fluid"></div>
-            <div class="col-3 col-md-4 font-1 text-white">Code Init &copy 2020 | <a href="#" class="text-white text-transform-none">Mentions légales</a></div>
+            <div class="col-3 col-md-4 font-1 text-white">Code Init &copy 2020 | <a href="{{ path('app_mentions') }}" class="text-white text-transform-none">Mentions légales</a></div>
         </div>
     </footer>
 {% endblock %}

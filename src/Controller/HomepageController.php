@@ -37,7 +37,12 @@ class HomepageController extends AbstractController
         ]);
     }
 
-
+    /**
+     * @Route("/mentions-legales", name="app_mentions")
+     */
+    public function mention(){
+        return $this->render('front/mentions-legale/mentios_legale.html.twig');
+    }
 
 
 

@@ -48,7 +48,7 @@ class Order
     public function __construct()
     {
         $this->datetime = new \Datetime();
-        $this->product = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -100,6 +100,22 @@ class Order
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->product->contains($product)) {
+            $this->product->removeElement($product);
+        }
 
         return $this;
     }

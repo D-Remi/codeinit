@@ -16,13 +16,13 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeSlide()">&times;</a>
                 <ul>
                     <li class="my-4">
-                        <a href="#nav" Class="text-white">Se</a>
+                        <a href="{{ path('homepage') }}" class="text-white">Accueil</a>
                     </li>
                     <li class="my-4">
-                        <a href="#rea" Class="text-white">Réalisation</a>
+                        <a href="{{ path('app_cart') }}" class="text-white">Mon panier</a>
                     </li>
                     <li class="my-4">
-                        <a href="#foot" Class="text-white">Link</a>
+                        <a href="{{ path('app_logout') }}" class="text-white">Se deconnecter</a>
                     </li>
                 </ul>
             </div>
@@ -83,7 +83,7 @@
                                             <a href="{{ path('app_admin_product') }}">Liste des Produit </a>
                                         </li>
                                         <li>
-                                            <a href="{{ path('app_add_product') }}">Add</a>
+                                            <a href="{{ path('app_add_product') }}">Ajouter</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -96,13 +96,10 @@
                                 <div class="sidebar-submenu">
                                     <ul>
                                         <li>
-                                            <a href="{{ path('app_admin_contact') }}">Contect</a>
+                                            <a href="{{ path('app_admin_contact') }}">Contact</a>
                                         </li>
                                         <li>
                                             <a href="">Document</a>
-                                        </li>
-                                        <li>
-                                            <a href="">Mentions Légales</a>
                                         </li>
                                     </ul>
                                 </div>

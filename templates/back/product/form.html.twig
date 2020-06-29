@@ -1,5 +1,25 @@
 {{ form_start(formProduct) }}
 <div class="form-group">
-    <button type="submit" class="btn btn-validation"><i class="far fa-save btn-icon-validation"></i>Enregistrer</button>
+    {{ form_label(formProduct.name, "Nom du service", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <span class="text-danger">{{ form_errors(formProduct.name) }}</span>
+    <div class="col-sm-10">
+        {{ form_widget(formProduct.name , {'attr': {'class': 'form-control'}}) }}
+    </div>
 </div>
+<div class="form-group">
+    {{ form_label(formProduct.content, "Description", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <span class="text-danger">{{ form_errors(formProduct.content) }}</span>
+    <div class="col-sm-10">
+        {{ form_widget(formProduct.content , {'attr': {'class': 'input-inut'}}) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(formProduct.price, "Prix", {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+    <span class="text-danger">{{ form_errors(formProduct.price) }}</span>
+    <div class="col-sm-10">
+        {{ form_widget(formProduct.price , {'attr': {'class': 'input-inut'}}) }}
+    </div>
+</div>
+<button type="submit" class="btn btn-primary">Valider</button>
+<a type="reset" href="{{ path( 'app_admin_user' ) }}" class="btn btn-danger">Retour</a>
 {{ form_end(formProduct) }}

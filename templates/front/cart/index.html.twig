@@ -41,15 +41,19 @@
                                     <td>
                                         {% if product.id == 1 %}
                                             <img src="{{ asset('build/images/education-edtech.png') }}" class="" style="height: 100px;width: 100px">
+                                        {% elseif product.id == 2 %}
+                                            <img src="{{ asset('build/images/cart2.png') }}" class="" style="height: 100px;width: 100px">
+                                        {% else %}
+                                            <img src="{{ asset('build/images/cart3.png') }}" class="" style="height: 100px;width: 100px">
                                         {% endif %}
                                     </td>
                                     <td>{{ product.name }}</td>
                                     <td>{{ product.content }}</td>
                                     <td>{{ product.price }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-danger">
+                                        <a href="{{ path('app_delete_cart') }}" type="reset" class="btn btn-danger">
                                             <span class="fa fa-remove"></span> Supprimer
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>

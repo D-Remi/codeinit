@@ -76,6 +76,7 @@ class User implements UserInterface
         $this->orders = new ArrayCollection();
     }
 
+
     public function getId(): ?int
     {
         return $this->id;
@@ -100,7 +101,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->name;
     }
 
     /**

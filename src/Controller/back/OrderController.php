@@ -7,29 +7,35 @@ namespace App\Controller\back;
 use App\Entity\Order;
 use App\Repository\OrderRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class OrderController extends AbstractController
 {
     /**
      * @Route("/administration/order", name="app_admin_order")
      */
-    public function index(OrderRepository $orderRepository){
-        $orders = $orderRepository->findAll();
+    public function index(OrderRepository $orderRepository,Request $request,PaginatorInterface $paginator){
+        $orders = $orderRepository->findBy([],
+        ['id'=> 'desc']);
+
+        $order = $paginator->paginate(
+            $orders, //je passe les commandes
+            $request->query->getInt('page', '1'),//numero de la page par defaut
+            8
+        );
 
         return $this->render('back/order/index.html.twig',[
-            'orders' => $orders
+            'orders' => $order
         ]);
     }
 
     /**
      * @Route("/administration/order/add", name="app_add_order")
      */
-    public function addOder(Request $request,
+    public function addOrder(Request $request,
                             EntityManagerInterface $entityManager
     ){
         $order = new Order();
@@ -54,7 +60,7 @@ class OrderController extends AbstractController
     /**
      * @Route("/administration/order/update/{id}", name="app_update_order")
      */
-    public function updateUser(OrderRepository $orderRepository,
+    public function updateOrder(OrderRepository $orderRepository,
                                $id,
                                EntityManagerInterface $em,
                                Request  $request
@@ -81,12 +87,12 @@ class OrderController extends AbstractController
     /**
      * @Route("/administration/order/delete/{id}", name="app_delete_order")
      */
-    public function deleteUser(OrderRepository $orderRepository,$id,EntityManagerInterface $em){
+    public function deleteOrder(OrderRepository $orderRepository,$id,EntityManagerInterface $em){
         // je recupere les donnée de la commande grace a l'id
         $order = $orderRepository->find($id);
         // j'appel la suppression de l'objet recuperer grace a la methode remove
         $em->remove($order);
-        // j'envoie la suppression avec la methode flush afin de supprimer l'utilisateur
+        // j'envoie la suppression avec la methode flush afin de supprimer la commande
         $em->flush();
 
         return $this->redirectToRoute('app_admin', array('order'=> $order));
