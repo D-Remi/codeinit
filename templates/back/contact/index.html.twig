@@ -32,8 +32,8 @@
                         <td>{{ contact.object }}</td>
                         <td>{{ contact.email }}</td>
                         <td>
-                            <a class="text-secondary" href=""><i class="fas fa-pencil-alt"></i></a>
-                            <a  class="text-danger" href="" ><i class="fa fa-trash"></i></a>
+                            <a class="text-secondary" href="{{ path('app_show_contact', {'id': contact.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                            <a  class="text-danger" href="{{ path('app_delete_contact', {'id': contact.id}) }}" ><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -8,11 +8,11 @@ namespace App\Controller\back;
 // ça correspond à un import ou un require en PHP
 // pour pouvoir utiliser ces classe dans mon code
 use App\Entity\User;
+use App\Form\RegistrationFormType;
 use App\Form\UserFormType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -37,24 +37,28 @@ class UserController extends AbstractController
      * j'utilise l'autowire de symfony pour instancier les classes Request,
      * EntityManagerInterface,UserPasswordEncoderInterface dans leur variable respective
      */
-    public function addUser(Request $request,EntityManagerInterface $entityManager,UserPasswordEncoderInterface $encoder){      // permettre de créer un nouveau utilisateur qui sera dans la variable $user
+    public function addUser(Request $request,EntityManagerInterface $entityManager,UserPasswordEncoderInterface $encoder){  // permettre de créer un nouveau utilisateur qui sera dans la variable $user
         // new User Correspond a l'entité User
         $user = new User();
-        // je créé mon formulaire, et je le lie à mon nouveau utilisateur
-        $form = $this->createForm(UserFormType::class,$user);
+        // je créé mon formulaire, et je le lie à mon nouvel utilisateur
+        $form = $this->createForm(RegistrationFormType::class,$user);
         // je demande à mon formulaire $form de gérer les données
         // de la requête POST
         $form->handleRequest($request);
         // si le formulaire a été envoyé, et que les données sont valides
         if($form->isSubmitted() && $form->isValid()){
             // pour  que le mot de passe soit crypté lors de la creation d'un utilisateur
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($hash);
+            $user->setPassword(
+                $encoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
             // je Persist l'utilisateur créer
             $entityManager->persist($user);
             $entityManager->flush();
             // j'ajoute un message "flash"
-            $this->addFlash('success', 'l\'utilisateur a bien été créer !');
+            $this->addFlash('success', 'l\'utilisateur a bien été créé !');
             //j'effectue une redirection une fois l'user creer
             return $this->redirectToRoute('app_admin_user');
         }
@@ -69,6 +73,7 @@ class UserController extends AbstractController
     public function updateUser(UserRepository $userRepository,
                                $id,
                                EntityManagerInterface $em,
+                               UserPasswordEncoderInterface $encoder,
                                Request  $request
                                 )
     {
@@ -78,7 +83,13 @@ class UserController extends AbstractController
         $form = $this->createForm(UserFormType::class,$user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-            $this->addFlash('success',"utilisateur a jours ");
+            $user->setPassword(
+                $encoder->encodePassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+            $this->addFlash('success',"l'utilisateur à bien été mis a jours ");
             $em->persist($user);
             $em->flush();
 

@@ -42,8 +42,8 @@ class ProductController extends AbstractController
 
             $em->persist($product);
             $em->flush();
-
-            return $this->redirectToRoute('app_admin');
+            $this->addFlash('success', 'le service a bien été créé');
+            return $this->redirectToRoute('app_admin_product');
         }
 
         return $this->render('back/product/add.html.twig',[
@@ -73,8 +73,8 @@ class ProductController extends AbstractController
 
             $em->persist($product);
             $em->flush();
-
-            return $this->redirectToRoute('app_admin');
+            $this->addFlash('success', 'le service a bien été mis a jour');
+            return $this->redirectToRoute('app_admin_product');
         }
         return $this->render('back/product/update.html.twig', array('formProduct'=> $form->createView()));
     }
@@ -89,7 +89,7 @@ class ProductController extends AbstractController
         $em->remove($product);
         // j'envoie la suppression avec la methode flush afin de supprimer l'utilisateur
         $em->flush();
-
+        $this->addFlash('success', 'le service a bien été supprimer');
         return $this->redirectToRoute('app_admin', array('product'=> $product));
     }
 }

@@ -38,12 +38,15 @@ class CartController extends AbstractController
             }
         }
         $user = $this->getUser();
+
         $form = $this->createForm(OrderType::class, $order);
         $form->handleRequest($request);
         if ($request->isMethod('POST') && $form->isValid()) {
             $order->setUser($user);
             $em->persist($order);
             $em->flush();
+            $this->get('session')->set('cart', null);
+            $this->addFlash('success',"Votre Commande a bien été pris en compte");
             return $this->redirectToRoute('profile');
         }
         return $this->render('front/cart/index.html.twig', [
@@ -56,8 +59,8 @@ class CartController extends AbstractController
      * @Route("/cart/delete", name="app_delete_cart")
      */
     public function removeCart(Request $request){
-        $session = $request->getSession();
-        $session->clear();
+
+        $this->get('session')->set('cart', null);
 
         return $this->redirectToRoute('app_cart');
     }

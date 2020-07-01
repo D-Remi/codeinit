@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Document;
 use App\Entity\Product;
 use App\Form\ContactFormType;
+use App\Form\DocType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +20,19 @@ class HomepageController extends AbstractController
      */
     public function index(Request $request,EntityManagerInterface $em)
     {
-        $em = $this->getDoctrine()->getManager();
+
         $produtcs = $em->getRepository(Product::class)->findAll();
 
+        $doc = new Document();
         $contact = new Contact();
+
+        $formDoc = $this->createForm(DocType::class, $doc);
+        $formDoc->handleRequest($request);
+        if ($formDoc->isSubmitted() && $formDoc->isValid()){
+
+            $em->persist($doc);
+            $em->flush();
+        }
 
         $form = $this->createForm(ContactFormType::class, $contact);
         $form->handleRequest($request);
@@ -29,11 +40,13 @@ class HomepageController extends AbstractController
 
             $em->persist($contact);
             $em->flush();
+            $this->addFlash('success',"Message a bien été envoyé");
         }
 
         return $this->render('front/homepage/index.html.twig',[
             'products' => $produtcs,
-            'form'=> $form->createView()
+            'form'=> $form->createView(),
+            'formDoc'=> $formDoc->createView()
         ]);
     }
 

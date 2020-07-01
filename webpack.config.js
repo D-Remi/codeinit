@@ -78,6 +78,11 @@ Encore
         to: 'images/[path][name].[ext]',
         pattern: /\.(png|jpg|jpeg)$/
     })
+    .copyFiles({
+        from: 'assets/file',
+        to: 'file/[path][name].[ext]',
+        pattern: /\.(pdf|doc|docx)$/
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();

@@ -20,7 +20,7 @@ class DashboardController extends AbstractController
 
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->findAll();
-        $Product = $em->getRepository(Product::class)->findAll();
+        //$Product = $em->getRepository(Product::class)->findAll();
         $order = $em->getRepository(Order::class)->findAll();
         $contact = $em->getRepository(Contact::class)->findAll();
 

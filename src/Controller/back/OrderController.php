@@ -48,8 +48,8 @@ class OrderController extends AbstractController
 
             $entityManager->persist($order);
             $entityManager->flush();
-
-            return $this->redirectToRoute('app_admin');
+            $this->addFlash('success', 'la commande a bien été créé');
+            return $this->redirectToRoute('app_admin_order');
         }
 
         return $this->render('back/order/add.html.twig',[
@@ -78,8 +78,8 @@ class OrderController extends AbstractController
 
             $em->persist($order);
             $em->flush();
-
-            return $this->redirectToRoute('app_admin');
+            $this->addFlash('success', 'la commande a bien été mis a jour');
+            return $this->redirectToRoute('app_admin_order');
         }
         return $this->render('back/order/update.html.twig', array('formOrder'=> $form->createView()));
     }
@@ -94,7 +94,8 @@ class OrderController extends AbstractController
         $em->remove($order);
         // j'envoie la suppression avec la methode flush afin de supprimer la commande
         $em->flush();
+        $this->addFlash('success', 'la commande a bien été supprimer !');
 
-        return $this->redirectToRoute('app_admin', array('order'=> $order));
+        return $this->redirectToRoute('app_admin_order', array('order'=> $order));
     }
 }
